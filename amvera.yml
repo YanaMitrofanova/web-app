@@ -7,10 +7,11 @@ meta:
 build:
   command: cd frontend && npm install && npm run build
   artifacts:
-    key: "frontend/dist"/*
-    Value: /
+    key: "frontend/dist"/
+    value: /
 
 run:
   # Устанавливаем легкий сервер для раздачи статических файлов на порту 80
-  command: npx serve -s . -p 80
+  command:
+  containerPort: 80
 
