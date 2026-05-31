@@ -5,14 +5,32 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors({
-    origin: [
-      'https://web-app-kappa-neon.vercel.app', // Вставьте сюда скопированный адрес из Шага 1
-      'http://localhost:5173',                  // Оставляем для локальной разработки
+
+
+app.use((req, res, next) => {
+    const allowedOrigins = [
+      'https://web-app-kappa-neon.vercel.app',
+      'http://localhost:5173',
       'http://localhost:3000'
-    ],
-    credentials: true
-  }));
+    ];
+    
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+  
+    // Если это предварительный запрос OPTIONS, сразу отвечаем успешным статусом 200
+    if (req.method === 'OPTIONS') {
+      return res.sendStatus(200);
+    }
+  
+    next();
+  });
+app.options('*', cors());
 app.use(express.json());
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
