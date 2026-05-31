@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Барахолка ЖК</title>
+</head>
+<body>
+
+<div class="container">
+    <!-- Навигация -->
+    <nav id="main-nav">
+        <!-- Ссылки теперь имеют id для назначения событий в JS -->
+        <a id="nav-feed">Лента</a>
+        <a id="nav-create">Подать объявление</a>
+        <a id="nav-profile">Личный кабинет</a>
+        <a id="nav-logout" class="logout-btn">Выйти</a>
+    </nav>
+
+    <!-- 1. СТРАНИЦА ВХОДА -->
+    <div id="page-login" class="page active">
+        <h2>Вход в барахолку ЖК</h2>
+        <form id="login-form">
+            <input type="text" id="login-username" placeholder="Номер квартиры или имя" required>
+            <input type="password" id="login-password" placeholder="Пароль" required>
+            <button type="submit">Войти</button>
+        </form>
+    </div>
+
+    <!-- 2. ЛЕНТА ОБЪЯВЛЕНИЙ -->
+    <div id="page-feed" class="page">
+        <h2>Объявления соседей</h2>
+        <select id="filter-category">
+            <option value="all">Все категории</option>
+            <option value="furniture">Мебель</option>
+            <option value="appliances">Техника</option>
+            <option value="children">Детские вещи</option>
+        </select>
+        <div id="feed-items" class="grid"></div>
+    </div>
+
+    <!-- 3. СОЗДАНИЕ ОБЪЯВЛЕНИЯ -->
+    <div id="page-create" class="page">
+        <h2>Подать объявление</h2>
+        <form id="create-form">
+            <input type="text" id="prod-title" placeholder="Название товара" required>
+            <input type="number" id="prod-price" placeholder="Цена (руб.)" required>
+            <select id="prod-category">
+                <option value="furniture">Мебель</option>
+                <option value="appliances">Техника</option>
+                <option value="children">Детские вещи</option>
+            </select>
+            <input type="url" id="prod-img" placeholder="Ссылка на фото (URL)">
+            <textarea id="prod-desc" placeholder="Описание, состояние" rows="4" required></textarea>
+            <button type="submit">Опубликовать</button>
+        </form>
+    </div>
+
+    <!-- 4. ЛИЧНЫЙ КАБИНЕТ -->
+    <div id="page-profile" class="page">
+        <h2>Личный кабинет</h2>
+        <p>Вы вошли как: <strong id="user-info"></strong></p>
+        <h3>Мои объявления:</h3>
+        <div id="my-items" class="grid"></div>
+    </div>
+</div>
+
+<!-- Подключение главного скрипта как модуля -->
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
