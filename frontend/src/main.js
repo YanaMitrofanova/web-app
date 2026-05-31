@@ -1,7 +1,7 @@
 // Импорт стилей (Vite сам добавит их на страницу)
 import './style.css';
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://baraholka-yana91.amvera.io/';
 
 // Система роутинга
 function navigate(pageId) {
