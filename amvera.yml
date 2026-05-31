@@ -5,10 +5,12 @@ meta:
     version: 22
 
 build:
-  command: cd frontend && npm install && npm run build
+  # Используем правильное поле для кастомных команд сборщика
+  additionalCommands:
+    - cd frontend && npm install && npm run build
   artifacts:
     "frontend/dist": /
 
 run:
+  # Оставляем пустым для автоматического запуска веб-сервера
   command: ""
-
