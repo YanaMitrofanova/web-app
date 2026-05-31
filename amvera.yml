@@ -1,0 +1,15 @@
+meta:
+  environment: node
+  toolchain:
+    name: npm
+    version: 22
+
+build:
+  # Обманываем Amvera: вместо падения в корне, запускаем сборку внутри папки frontend
+  command: cd frontend && npm install && npm run build
+  artifacts:
+    "frontend/dist": /
+
+run:
+  # Для раздачи статики через встроенный Nginx строка запуска должна быть пустой
+  command: echo "Frontend built successfully"
