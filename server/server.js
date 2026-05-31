@@ -5,7 +5,14 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({
+    origin: [
+      'https://web-app-kappa-neon.vercel.app', // Вставьте сюда скопированный адрес из Шага 1
+      'http://localhost:5173',                  // Оставляем для локальной разработки
+      'http://localhost:3000'
+    ],
+    credentials: true
+  }));
 app.use(express.json());
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
