@@ -30,7 +30,6 @@ app.use((req, res, next) => {
   
     next();
   });
-app.options('*', cors());
 app.use(express.json());
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
