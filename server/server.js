@@ -47,7 +47,7 @@ const headers = {
     'Prefer': 'return=representation' 
 };
 
-app.get('/api/products', async (req, res) => {
+app.get('/products', async (req, res) => {
     try {
         const { category } = req.query;
         
